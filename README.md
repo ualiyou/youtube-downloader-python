@@ -1,46 +1,46 @@
 # 🎬 YouTube Downloader
 
 <p align="center">
-  اسکریپت‌های سادهٔ Python برای دانلود ویدیو و پلی‌لیست YouTube با کیفیت بالا و زیرنویس انگلیسی.
+  Simple Python scripts for downloading YouTube videos and playlists in high quality with English subtitles.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB?logo=python&logoColor=white" alt="Python 3.9+">
+  <img src="https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/yt--dlp-powered-FF0000?logo=youtube&logoColor=white" alt="Powered by yt-dlp">
   <img src="https://img.shields.io/badge/Platform-macOS%20%7C%20Windows%20%7C%20Linux-555555" alt="Cross-platform">
 </p>
 
-> ⚠️ فقط محتوایی را دانلود کنید که مجاز به دانلود آن هستید و قوانین YouTube را رعایت کنید.
+> ⚠️ Download only content you are allowed to download, and follow YouTube's Terms of Service.
 
-## ✨ امکانات
+## ✨ Features
 
-- 🎥 دانلود یک ویدیو یا پلی‌لیست کامل
-- 🎞️ اولویت با بهترین کیفیت MP4 (۷۲۰p برای ویدیو، ۱۰۸۰p برای پلی‌لیست)
-- 💬 دانلود و embed کردن زیرنویس انگلیسی
-- 🔁 تلاش مجدد خودکار هنگام خطا
-- 🗂️ جلوگیری از دانلود تکراری پلی‌لیست با archive
+- 🎥 Download a single video or a complete playlist
+- 🎞️ Prefer the best MP4 quality (720p for videos, 1080p for playlists)
+- 💬 Download and embed English subtitles
+- 🔁 Retry failed downloads automatically
+- 🗂️ Skip previously downloaded playlist items with an archive
 
-## 🚀 شروع سریع
+## 🚀 Quick Start
 
 ```bash
 python3 -m pip install -U yt-dlp
 python3 dl.py
 ```
 
-قبل از اجرا، مقدار `url` را در فایل اسکریپت به لینک ویدیو یا پلی‌لیست خودتان تغییر دهید.
+Before running a script, change its `url` value to your video or playlist link.
 
-## 📦 پیش‌نیازها
+## 📦 Requirements
 
-| ابزار                                      | کاربرد                     |
-| ------------------------------------------ | -------------------------- |
-| Python 3.9+                                | اجرای اسکریپت‌ها           |
-| [yt-dlp](https://github.com/yt-dlp/yt-dlp) | دانلود محتوا               |
-| FFmpeg                                     | ادغام ویدیو، صدا و زیرنویس |
+| Tool | Purpose |
+| --- | --- |
+| Python 3 | Runs the scripts |
+| [yt-dlp](https://github.com/yt-dlp/yt-dlp) | Downloads content |
+| FFmpeg | Merges video, audio, and subtitles |
 
 ### macOS
 
 ```bash
-# Python: https://www.python.org/downloads/
+# Install Python from https://www.python.org/downloads/ if needed
 python3 -m pip install -U yt-dlp
 brew install ffmpeg
 ```
@@ -54,56 +54,56 @@ sudo apt install ffmpeg
 
 ### 🪟 Windows
 
-Python را از [python.org/downloads](https://www.python.org/downloads/) نصب کنید و گزینهٔ **Add Python to PATH** را فعال کنید. سپس در PowerShell و از پوشهٔ پروژه اجرا کنید:
+Install Python from [python.org/downloads](https://www.python.org/downloads/) and enable **Add Python to PATH**. Then run this from the project folder in PowerShell:
 
 ```powershell
 py -m pip install -U yt-dlp
 winget install Gyan.FFmpeg
 ```
 
-## ▶️ اجرا
+## ▶️ Usage
 
-| دستور              | کاربرد          | تنظیمات اصلی                                     |
-| ------------------ | --------------- | ------------------------------------------------ |
-| `python3 dl.py`    | دانلود یک ویدیو | کیفیت حداقل ۷۲۰p، زیرنویس `en` و `en-orig`       |
-| `python3 dl-pl.py` | دانلود پلی‌لیست | کیفیت حداقل ۱۰۸۰p، زیرنویس انگلیسی و کوکی Chrome |
+| Command | Use case | Main settings |
+| --- | --- | --- |
+| `python3 dl.py` | Download one video | Minimum 720p; `en` and `en-orig` subtitles |
+| `python3 dl-pl.py` | Download a playlist | Minimum 1080p; English subtitles; Chrome cookies |
 
-در ویندوز به‌جای `python3` از `py` استفاده کنید:
+On Windows, use `py` instead of `python3`:
 
 ```powershell
-py dl.py      # یک ویدیو
-py dl-pl.py   # پلی‌لیست
+py dl.py      # One video
+py dl-pl.py   # Playlist
 ```
 
-خروجی‌ها در `downloads/` ذخیره می‌شوند. پلی‌لیست‌ها در پوشه‌ای با نام همان پلی‌لیست قرار می‌گیرند.
+Downloads are saved in `downloads/`. Playlist downloads are grouped in a folder named after the playlist.
 
-## 🧩 POT provider (اختیاری)
+## 🧩 Optional POT Provider
 
-برای اجرای provider با Docker:
+Run the provider with Docker:
 
 ```bash
 docker run -d --name bgutil-pot --restart unless-stopped -p 4416:4416 brainicism/bgutil-ytdlp-pot-provider
 ```
 
-یا برای نصب آن با Python:
+Or install it with Python:
 
 ```bash
 python3 -m pip install -U bgutil-ytdlp-pot-provider
 ```
 
-در ویندوز ابتدا [Docker Desktop](https://www.docker.com/products/docker-desktop/) را نصب و اجرا کنید، سپس دستور Docker بالا را در PowerShell بزنید.
+On Windows, install and start [Docker Desktop](https://www.docker.com/products/docker-desktop/) before running the Docker command in PowerShell.
 
-> ℹ️ نصب provider به‌تنهایی تنظیمات `yt-dlp` را تغییر نمی‌دهد؛ در صورت نیاز باید آن را در تنظیمات اسکریپت متصل کنید.
+> ℹ️ Installing the provider does not configure `yt-dlp` automatically. Connect it in the script configuration if you need to use it.
 
-## 📁 ساختار پروژه
+## 📁 Project Structure
 
 ```text
 .
-├── dl.py       # دانلود یک ویدیو
-├── dl-pl.py    # دانلود پلی‌لیست
-└── downloads/  # فایل‌هایی که دانلود میشن داخل این پوشه ذخیره میشن
+├── dl.py       # Download one video
+├── dl-pl.py    # Download a playlist
+└── downloads/  # Output files (ignored by Git)
 ```
 
-## 🤝 مشارکت
+## 🤝 Contributing
 
-ایده یا باگی دارید؟ یک Issue باز کنید یا Pull Request بفرستید.
+Found a bug or have an idea? Open an issue or submit a pull request.
