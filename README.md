@@ -15,7 +15,7 @@
 ## ✨ Features
 
 - 🎥 Download a single video or a complete playlist
-- 🎞️ Prefer the best MP4 quality (720p for videos, 1080p for playlists)
+- 🎞️ Prefer the best available MP4 quality (minimum 720p by default)
 - 💬 Download and embed English subtitles
 - 🔁 Retry failed downloads automatically
 - 🗂️ Skip previously downloaded playlist items with an archive
@@ -23,11 +23,11 @@
 ## 🚀 Quick Start
 
 ```bash
-python3 -m pip install -U yt-dlp
-python3 dl.py
+python3 -m pip install -r requirements.txt
+python3 dl.py "https://www.youtube.com/watch?v=VIDEO_ID"
 ```
 
-Before running a script, change its `url` value to your video or playlist link.
+The scripts keep their previous built-in URLs when no URL is provided.
 
 ## 📦 Requirements
 
@@ -65,8 +65,8 @@ winget install Gyan.FFmpeg
 
 | Command | Use case | Main settings |
 | --- | --- | --- |
-| `python3 dl.py` | Download one video | Minimum 720p; `en` and `en-orig` subtitles |
-| `python3 dl-pl.py` | Download a playlist | Minimum 1080p; English subtitles; Chrome cookies |
+| `python3 dl.py URL` | Download one video | Minimum 720p; `en` and `en-orig` subtitles |
+| `python3 dl-pl.py URL` | Download a playlist | Minimum 720p; English subtitles; Chrome cookies |
 
 On Windows, use `py` instead of `python3`:
 
@@ -76,6 +76,32 @@ py dl-pl.py   # Playlist
 ```
 
 Downloads are saved in `downloads/`. Playlist downloads are grouped in a folder named after the playlist.
+
+### Copy-paste Examples
+
+```bash
+# Download one video
+python3 dl.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
+# Download one video at 1080p with English subtitles
+python3 dl.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --quality 1080 --sub-lang en
+
+# Download audio only as MP3
+python3 dl.py "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --audio-only
+
+# Download a playlist
+python3 dl-pl.py "https://www.youtube.com/playlist?list=PL1PqvM2UQiMoGNTaxFMSK2cih633lpFKP"
+```
+
+### Options
+
+```bash
+python3 dl.py URL --quality 1080 --sub-lang en --output videos
+python3 dl.py URL --audio-only
+python3 dl-pl.py URL --cookies-from-browser none
+```
+
+`--quality`, `--sub-lang`, and `--output` are available in both scripts. `--audio-only` saves MP3 files and skips subtitle embedding. Playlist downloads use Chrome cookies by default; pass `--cookies-from-browser none` to disable them.
 
 ## 🧩 Optional POT Provider
 
@@ -101,6 +127,8 @@ On Windows, install and start [Docker Desktop](https://www.docker.com/products/d
 .
 ├── dl.py       # Download one video
 ├── dl-pl.py    # Download a playlist
+├── requirements.txt
+├── LICENSE
 └── downloads/  # Output files (ignored by Git)
 ```
 
