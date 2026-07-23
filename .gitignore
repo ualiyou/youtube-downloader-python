@@ -1,0 +1,5 @@
+# Publish only source scripts and project documentation.
+*
+!.gitignore
+!*.py
+!README.md
