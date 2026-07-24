@@ -55,5 +55,8 @@ ydl_opts = {
 if args.cookies_from_browser.lower() != "none":
     ydl_opts["cookiesfrombrowser"] = (args.cookies_from_browser,)
 
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([args.url])
+try:
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([args.url])
+except Exception as error:
+    print("❌", error)
