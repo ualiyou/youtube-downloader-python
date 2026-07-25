@@ -20,6 +20,7 @@ parser.add_argument("--quality", type=positive_int, default=720, help="preferred
 parser.add_argument("--sub-lang", default="en,en-orig", help="comma-separated subtitle languages")
 parser.add_argument("--output", default="downloads", help="output directory (default: downloads)")
 parser.add_argument("--audio-only", action="store_true", help="download audio as MP3 instead of video")
+parser.add_argument("--cookies-from-browser", default="chrome", help="browser for cookies; use 'none' to disable (default: chrome)")
 args = parser.parse_args()
 
 os.makedirs(args.output, exist_ok=True)
@@ -47,6 +48,9 @@ ydl_opts = {
     "extractor_args": {"youtube": {"player_client": ["web_safari", "mweb"]}},
     "retries": 5,
 }
+
+if args.cookies_from_browser.lower() != "none":
+    ydl_opts["cookiesfrombrowser"] = (args.cookies_from_browser,)
 
 try:
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:

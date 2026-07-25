@@ -41,7 +41,7 @@ The scripts keep their previous built-in URLs when no URL is provided.
 
 ```bash
 # Install Python from https://www.python.org/downloads/ if needed
-python3 -m pip install -U yt-dlp
+python3 -m pip install -U "yt-dlp[default,curl-cffi]"
 brew install ffmpeg
 ```
 
@@ -57,7 +57,7 @@ sudo apt install ffmpeg
 Install Python from [python.org/downloads](https://www.python.org/downloads/) and enable **Add Python to PATH**. Then run this from the project folder in PowerShell:
 
 ```powershell
-py -m pip install -U yt-dlp
+py -m pip install -U "yt-dlp[default,curl-cffi]"
 winget install Gyan.FFmpeg
 ```
 

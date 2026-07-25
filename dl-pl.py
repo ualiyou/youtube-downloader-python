@@ -48,7 +48,7 @@ ydl_opts = {
     "playlist_items": None,
     "ignoreerrors": True,
     "download_archive": os.path.join(args.output, "archive.txt"),
-    "extractor_args": {"youtube": {"player_client": ["web_safari", "mweb"]}},
+    "extractor_args": {"youtube": {"player_client": ["mweb"]}},
     "retries": 5,
 }
 
