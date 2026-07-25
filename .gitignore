@@ -5,3 +5,12 @@
 !README.md
 !requirements.txt
 !LICENSE
+!pyproject.toml
+!CHANGELOG.md
+!CONTRIBUTING.md
+!CODE_OF_CONDUCT.md
+!tests/
+!tests/**
+tests/__pycache__/
+!.github/
+!.github/**

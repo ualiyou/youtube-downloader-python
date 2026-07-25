@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "youtube-playlist-archiver"
+version = "0.1.0"
+description = "A local CLI for resumable YouTube video and playlist downloads."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [{name = "ualiyou"}]
+dependencies = ["yt-dlp[default,curl-cffi]"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+]
+
+[project.urls]
+Repository = "https://github.com/ualiyou/youtube-downloader-python"
+Issues = "https://github.com/ualiyou/youtube-downloader-python/issues"
+
+[project.scripts]
+yt-archive = "youtube_downloader:main"
+
+[tool.setuptools]
+py-modules = ["youtube_downloader"]
